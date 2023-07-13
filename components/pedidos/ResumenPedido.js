@@ -1,5 +1,5 @@
 import react, {useContext} from 'react';
-import PedidoContext from '../../context/pedidos/pedidocontext';
+import PedidoContext from '../../context/pedidos/PedidoContext';
 import ProductoResumen from './ProductoResumen';
 
 const ResumenPedido = () => {
