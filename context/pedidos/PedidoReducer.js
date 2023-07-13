@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import PedidoContext from './pedidocontext';
+import PedidoContext from './PedidoContext';
 
 import {
     SELECCIONAR_CLIENTE,

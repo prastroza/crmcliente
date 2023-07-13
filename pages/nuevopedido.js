@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 
 
 //Context de pedidos
-import PedidoContext from '../context/pedidos/pedidocontext';
+import PedidoContext from '../context/pedidos/PedidoContext';
 
 const NUEVO_PEDIDO = gql`
     mutation nuevoPedido ($input:PedidoInput) {
