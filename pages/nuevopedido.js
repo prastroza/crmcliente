@@ -55,23 +55,21 @@ const NuevoPedido = () => {
     //console.log(productos);
 
     //Mutation para crear un nuevo pedido.
-//    if(cache.data.data.ROOT_QUERY.obtenerPedidosVendedor) {
         const [nuevoPedido] = useMutation(NUEVO_PEDIDO, {
             update(cache, {data: {nuevoPedido}}) {
-                const {obtenerPedidosVendedor} = cache.readQuery({
-                    query: OBTENER_PEDIDOS
-                });
-                cache.writeQuery({
-                    query: OBTENER_PEDIDOS,
-                    data: {
-                        obtenerPedidosVendedor: [...obtenerPedidosVendedor, nuevoPedido]
-                    }
-                })
+                if(cache.data.data.ROOT_QUERY.obtenerPedidosVendedor) {
+                    const {obtenerPedidosVendedor} = cache.readQuery({
+                        query: OBTENER_PEDIDOS
+                    });
+                    cache.writeQuery({
+                        query: OBTENER_PEDIDOS,
+                        data: {
+                            obtenerPedidosVendedor: [...obtenerPedidosVendedor, nuevoPedido]
+                        }
+                    });
+                }
             }
         });
-  //  }
-
-
 
     const validarPedido = () => {
         return !productos.every(producto => producto.cantidad > 0  ) || total === 0 || cliente.length === 0 ? " opacity-50 cursor-not-allowed " : "" ;
