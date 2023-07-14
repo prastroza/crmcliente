@@ -4,8 +4,8 @@ import {setContext } from 'apollo-link-context';
 
 //Donde se conecte
 const httpLink = createHttpLink({
-    //uri: ' http://localhost:4000/',
-    uri: ' https://crmgraphql-c3hqmkrfsq-uc.a.run.app',
+    uri: ' http://localhost:4000/',
+    //uri: ' https://crmgraphql-c3hqmkrfsq-uc.a.run.app',
 });
 
 //Agregamos Header

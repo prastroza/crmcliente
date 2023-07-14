@@ -55,19 +55,21 @@ const NuevoPedido = () => {
     //console.log(productos);
 
     //Mutation para crear un nuevo pedido.
-    const [nuevoPedido] = useMutation(NUEVO_PEDIDO, {
-        update(cache, {data: {nuevoPedido}}) {
-            const {obtenerPedidosVendedor} = cache.readQuery({
-                query: OBTENER_PEDIDOS
-            });
-            cache.writeQuery({
-                query: OBTENER_PEDIDOS,
-                data: {
-                    obtenerPedidosVendedor: [...obtenerPedidosVendedor, nuevoPedido]
-                }
-            })
-        }
-    });
+//    if(cache.data.data.ROOT_QUERY.obtenerPedidosVendedor) {
+        const [nuevoPedido] = useMutation(NUEVO_PEDIDO, {
+            update(cache, {data: {nuevoPedido}}) {
+                const {obtenerPedidosVendedor} = cache.readQuery({
+                    query: OBTENER_PEDIDOS
+                });
+                cache.writeQuery({
+                    query: OBTENER_PEDIDOS,
+                    data: {
+                        obtenerPedidosVendedor: [...obtenerPedidosVendedor, nuevoPedido]
+                    }
+                })
+            }
+        });
+  //  }
 
 
 

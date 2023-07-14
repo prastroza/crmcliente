@@ -34,18 +34,19 @@ const NuevoProducto = () => {
     const [nuevoProducto] = useMutation(NUEVO_PRODUCTO, {
         update(cache, {data: { nuevoProducto }}) {
             // Obtener el objeto de cache que deseamos actualizar
-            const { obtenerProductos } = cache.readQuery({ query: OBTENER_PRODUCTOS })
+            if(cache.data.data.readQuery(OBTENER_PRODUCTOS)) {
+                const { obtenerProductos } = cache.readQuery({ query: OBTENER_PRODUCTOS });
 
-            //Reescribimos el cache (nunca se debe modificar)
-            cache.writeQuery({
-                query: OBTENER_PRODUCTOS,
-                data: {
-                    obtenerProductos : [...obtenerProductos, nuevoProducto]
-                }
-            })
-
+                //Reescribimos el cache (nunca se debe modificar)
+                cache.writeQuery({
+                    query: OBTENER_PRODUCTOS,
+                    data: {
+                        obtenerProductos : [...obtenerProductos, nuevoProducto]
+                    }
+                });
+            }
         }
-    })
+    });
 
     // Routing
     const router = useRouter();
